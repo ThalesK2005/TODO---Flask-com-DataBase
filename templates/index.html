@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="add_task">
+    <h1>Lista de Tarefas</h1>
+    <form action="/create" method="post" class="form-1">
+
+        <input type="text" class="add" name="description" placeholder="nova tarefa" required>
+        <button type="submit" class="btn-add">✛</button>
+        <link rel="stylesheet" href="/static/style.css">
+
+    </form>
+    
+    
+    
+
+    <div class="all-tasks">
+        <div class="header">
+            
+        </div>
+        
+            <ul>
+        {% for task in tasks %}
+        <li class="li-task">
+            <form action="/update/{{task.id}}" method="post" style="display: inline;" class="form-task">
+                <input type="text" name="description" value="{{ task.description}}" class="input-task">
+                
+            </form>
+            <form action="/delete/{{task.id}}" method="post" style="display: inline;">
+                <button type="submit" class="delete">✗</button>
+            </form>
+        </li>
+
+        {% endfor %}
+    </ul>
+    </div>
+    
+    </div>
+</body>
+
+</html>
